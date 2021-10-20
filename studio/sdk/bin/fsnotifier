@@ -1,0 +1,5 @@
+#!/bin/bash
+[ $(uname -s) == "Darwin" ] && exec $0-mac
+[ $(uname -s) == "Linux" ] && exec $0-linux
+echo fsnotifier not found for $(uname -s)
+exit 1

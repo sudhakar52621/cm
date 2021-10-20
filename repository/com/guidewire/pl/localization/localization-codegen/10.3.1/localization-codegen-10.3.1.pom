@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.guidewire.pl.localization</groupId>
+    <artifactId>localization-codegen-parent</artifactId>
+    <version>10.3.1</version>
+  </parent>
+  <artifactId>localization-codegen</artifactId>
+
+  <name>localization-codegen</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.guidewire.pl.codegen</groupId>
+      <artifactId>codegen-api</artifactId>
+      <version>${codegen.api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.codemodel</groupId>
+      <artifactId>codemodel</artifactId>
+      <version>${codemodel.version}</version>
+    </dependency>
+    <dependency>
+     <groupId>commons-cli</groupId>
+     <artifactId>commons-cli</artifactId>
+     <version>${commons.cli.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl</groupId>
+      <artifactId>pli18n</artifactId>
+      <version>${pli18n.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.xml.simple</groupId>
+      <artifactId>simplexml</artifactId>
+      <version>${simplexml.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

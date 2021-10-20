@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.guidewire.pl.entity</groupId>
+  <artifactId>entity-codegen-common</artifactId>
+  <version>10.10.2</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>17.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.codegen</groupId>
+      <artifactId>codegen-api</artifactId>
+      <version>0.20.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl</groupId>
+      <artifactId>pli18n</artifactId>
+      <version>0.7.1</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

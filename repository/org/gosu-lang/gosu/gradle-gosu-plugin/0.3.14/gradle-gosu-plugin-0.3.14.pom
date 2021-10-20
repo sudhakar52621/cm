@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.gosu-lang.gosu</groupId>
+  <artifactId>gradle-gosu-plugin</artifactId>
+  <version>0.3.14</version>
+  <name>gradle-gosu-plugin</name>
+  <description>Gosu language compiler for Gradle.  Built with Gradle 5.1.1.
+
+This has also been tested extensively with Gradle version(s): 5.1.1
+
+** Gradle versions below 2.12 are no longer supported **
+
+Projects applying this plugin require a compile-time dependency on the gosu-core-api library.  
+
+This version requires Gosu 1.13.9 or greater, or 1.14.2 or greater. 
+
+Please include this in the depencencies closure:
+
+dependencies {
+    compile group: 'org.gosu-lang.gosu', name: 'gosu-core-api', version: '1.14.16'
+}
+</description>
+  <url>http://gosu-lang.github.io/</url>
+  <scm>
+    <connection>scm:git:git@github.com:gosu-lang/gosu-lang.git</connection>
+    <developerConnection>scm:git:git@github.com:gosu-lang/gosu-lang.git</developerConnection>
+    <url>git@github.com:gosu-lang/gosu-lang.git</url>
+  </scm>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Kyle Moore</name>
+      <email>github@kylemoore.com</email>
+      <organization>gosu-lang.org</organization>
+    </developer>
+    <developer>
+      <name>The Gosu Team</name>
+      <email>gosu.lang.team@gmail.com</email>
+      <organization>Guidewire</organization>
+    </developer>
+  </developers>
+</project>

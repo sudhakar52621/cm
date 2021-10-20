@@ -1,0 +1,31 @@
+#! /bin/bash
+
+
+
+# Install libraries
+sudo yum install -y htop
+sudo amazon-linux-extras install -y tomcat8.5
+sudo cp /etc/sysconfig/tomcat /etc/sysconfig/tomcat.example
+
+# Configure Tomcat Startup Options
+sudo rm -f /etc/sysconfig/tomcat
+sudo touch /etc/sysconfig/tomcat
+echo 'JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep "java.home" | cut -c17-100)' | sudo tee -a /etc/sysconfig/tomcat
+echo 'JAVA_OPTS=""' | sudo tee -a /etc/sysconfig/tomcat
+echo 'CATALINA_OPTS="-server -Xms512m -Xmx2048m -Dgw.server.mode=dev -Dgw.pc.env=dev -Dgwdebug=false -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true"' | sudo tee -a /etc/sysconfig/tomcat
+echo
+echo "/etc/sysconfig/tomcat:"
+echo "-------------------------"
+cat /etc/sysconfig/tomcat
+echo
+echo $(java -XshowSettings:properties -version 2>&1 > /dev/null | grep "java.home" | cut -c17-100)
+echo
+
+
+
+# Setup Linux Service
+sudo systemctl stop tomcat
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+sudo service tomcat status -l
+sudo systemctl enable tomcat

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.guidewire.pl.pcfcodegen</groupId>
+  <artifactId>pcfcodegen-parent</artifactId>
+  <version>10.14.3</version>
+  <name>PCF Code Generator Parent POM</name>
+  <packaging>pom</packaging>
+
+  <organization>
+    <name>Guidewire, Inc.</name>
+    <url>http://guidewire.com</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Guidewire proprietary license</name>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- plugins -->
+    <maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version>
+    <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
+    <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+    <maven.jar.plugin.version>3.1.1</maven.jar.plugin.version>
+    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+
+    <!-- maven/java -->
+    <required.maven.version>3.6.0</required.maven.version>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+
+    <!-- libraries -->
+    <codegen.api.version>0.20.1</codegen.api.version>
+    <codemodel.version>1.0.1</codemodel.version>
+    <pcf.api.version>0.20.1</pcf.api.version>
+    <pli18n.version>0.7.1</pli18n.version>
+    <simplexml.version>1.13.1</simplexml.version>
+    <simplexml.schema.version>1.7.2</simplexml.schema.version>
+
+    <asm.version>7.0</asm.version>
+    <fest.assert.version>1.4</fest.assert.version>
+    <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
+    <guava.version>22.0</guava.version>
+    <intellj.annotations.version>17.0.0</intellj.annotations.version>
+    <junit.version>4.12</junit.version>
+    <protobuf.version>3.7.0</protobuf.version>
+    <slf4j.version>1.7.25</slf4j.version>
+  </properties>
+
+  <modules>
+    <module>pcfcodegen</module>
+    <module>pcfschema</module>
+    <module>pcfxml</module>
+    <module>pcfverifier</module>
+    <module>pcfcodegen-gradle-executor</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.guidewire.pl.codegen</groupId>
+        <artifactId>codegen-api</artifactId>
+        <version>${codegen.api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.guidewire.pl.pcf</groupId>
+        <artifactId>pcf-api</artifactId>
+        <version>${pcf.api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.guidewire.xml.simple</groupId>
+        <artifactId>simplexml</artifactId>
+        <version>${simplexml.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven.enforcer.plugin.version}</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>${required.maven.version}</version>
+                  </requireMavenVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versions.maven.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+          <configuration>
+            <compilerArgs>
+              <arg>-Xlint:all,-rawtypes,-unchecked</arg>
+            </compilerArgs>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven.jar.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven.release.plugin.version}</version>
+          <configuration>
+            <tagNameFormat>release/v@{project.version}</tagNameFormat>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <developerConnection>scm:git:ssh://git@stash.guidewire.com/pl/pcfcodegen.git</developerConnection>
+    <connection>scm:git:https://git@stash.guidewire.com/scm/pl/pcfcodegen.git</connection>
+    <tag>release/v10.14.3</tag>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>gw.thirdparty</id>
+      <url>https://nexus.guidewire.com/content/repositories/thirdparty/</url>
+      <name>Guidewire Nexus repository for third party libs not in Central</name>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>gw.releases.group</id>
+      <url>https://nexus.guidewire.com/content/groups/releases-group/</url>
+      <name>Guidewire internal releases repository</name>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>gw.snapshots.group</id>
+      <url>https://nexus.guidewire.com/content/groups/snapshots-group/</url>
+      <name>Guidewire internal snapshots repository</name>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>gw.releases.build</id>
+      <url>https://nexus.guidewire.com/content/repositories/releases/</url>
+      <name>Guidewire internal releases repository</name>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <distributionManagement>
+    <repository>
+      <id>com.guidewire.pl.releases</id>
+      <url>https://nexus.guidewire.com/content/repositories/releases/</url>
+      <name>Guidewire internal releases repository</name>
+    </repository>
+    <snapshotRepository>
+      <id>com.guidewire.pl.snapshots-dev</id>
+      <url>https://nexus.guidewire.com/content/repositories/snapshots-dev/</url>
+      <name>Guidewire internal snapshots repository</name>
+    </snapshotRepository>
+  </distributionManagement>
+  
+</project>

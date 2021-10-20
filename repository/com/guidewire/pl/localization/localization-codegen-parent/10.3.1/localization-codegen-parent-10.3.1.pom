@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.guidewire.pl.localization</groupId>
+  <artifactId>localization-codegen-parent</artifactId>
+  <version>10.3.1</version>
+  <packaging>pom</packaging>
+
+  <name>Aggregation POM for all Localization Codegen projects</name>
+
+  <scm>
+    <developerConnection>scm:git:ssh://git@stash.guidewire.com/pl/localization-codegen.git</developerConnection>
+    <connection>scm:git:https://stash.guidewire.com/scm/pl/localization-codegen.git</connection>
+    <tag>localization-codegen-parent-10.3.1</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>com.guidewire.pl.releases</id> <!-- id must match id in the ~/.m2/settings.xml! -->
+      <url>https://nexus.guidewire.com/content/repositories/releases/</url>
+      <name>Guidewire internal releases repository</name>
+    </repository>
+    <snapshotRepository>
+      <!-- snapshots-dev does not require authentication so id need not match id in the ~/.m2/settings.xml! -->
+      <id>com.guidewire.pl.snapshots-dev</id>
+      <url>https://nexus.guidewire.com/content/repositories/snapshots-dev/</url>
+      <name>Guidewire internal snapshots repository</name>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- plugins -->
+    <maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version>
+    <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
+    <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+    <maven.deploy.plugin.version>3.0.0-M1</maven.deploy.plugin.version>
+    <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
+
+    <!-- maven/java -->
+    <required.maven.version>3.6.0</required.maven.version>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+
+    <!-- libraries -->
+    <codegen.api.version>0.20.1</codegen.api.version>
+    <codemodel.version>1.0.1</codemodel.version>
+    <commons.cli.version>1.4</commons.cli.version>
+    <pli18n.version>0.7.1</pli18n.version>
+    <junit.version>4.12</junit.version>
+    <simplexml.version>1.13.1</simplexml.version>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven.enforcer.plugin.version}</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>${required.maven.version}</version>
+                  </requireMavenVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versions.maven.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven.surefire.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+          <configuration>
+            <compilerArgs>
+              <arg>-Xlint:all</arg>
+            </compilerArgs>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${maven.deploy.plugin.version}</version>
+          <configuration>
+            <deployAtEnd>true</deployAtEnd>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkCount>0</forkCount>
+          <!-- useSystemClassLoader true is the default, and that setting gives a warning if you don't fork -->
+          <useSystemClassLoader>false</useSystemClassLoader>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modules>
+    <module>localization-codegen</module>
+    <module>localization-codegen-gradle-executor</module>
+  </modules>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>gw.releases</id>
+      <url>https://nexus.guidewire.com/content/repositories/releases/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>gw.snapshots</id>
+      <url>https://nexus.guidewire.com/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <repository>
+      <id>gw.releases-group</id>
+      <url>https://nexus.guidewire.com/content/repositories/releases-group/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>gw.snapshots-group</id>
+      <url>https://nexus.guidewire.com/content/repositories/snapshots-group/</url>
+      <releases><enabled>false</enabled></releases>
+    </repository>
+  </repositories>
+</project>

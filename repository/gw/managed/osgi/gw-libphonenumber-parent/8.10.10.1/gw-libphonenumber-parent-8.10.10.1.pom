@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>gw-libphonenumber-parent</artifactId>
+  <version>8.10.10.1</version>
+  <packaging>pom</packaging>
+  <url>https://github.com/googlei18n/libphonenumber/</url>
+
+  <parent>
+    <groupId>gw.managed.osgi</groupId>
+    <artifactId>gw-libphonenumber-build-parent</artifactId>
+    <version>8.10.10.1</version>
+  </parent>
+
+  <description>
+    Phone number utility library for handling and manipulating localized and international phonenumbers.
+  </description>
+
+  <organization>
+    <name>Guidewire, Inc.</name>
+    <url>http://guidewire.com</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <developerConnection>scm:git:ssh://git@stash.guidewire.com/pl/libphonenumber.git</developerConnection>
+    <connection>scm:git:https://git@stash.guidewire.com/scm/pl/libphonenumber.git</connection>
+    <tag>gw-libphonenumber-build-parent-8.10.10.1</tag>
+  </scm>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <developers>
+    <developer>
+      <id>jia.shao.peng</id>
+      <name>Shaopeng Jia</name>
+      <email>jia.shao.peng@gmail.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>owner</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>lararennie</id>
+      <name>Lara Rennie</name>
+      <email>lararennie@google.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <contributors>
+    <contributor>
+      <name>tronikos</name>
+      <email>tronikos@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>g1smd.email</name>
+      <email>g1smd.email@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>Philippe Liard</name>
+      <email>philip.liard@gmail.com</email>
+    </contributor>
+  </contributors>
+
+  <modules>
+    <module>libphonenumber</module>
+    <!--<module>internal/prefixmapper</module>-->
+    <!--<module>carrier</module>-->
+    <!--<module>geocoder</module>-->
+    <!--<module>demo</module>-->
+  </modules>
+
+  <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.0.0-M2</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>3.6.0</version>
+                  </requireMavenVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+          <configuration>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+            <debug>true</debug>
+            <!--<debuglevel>none</debuglevel>-->
+            <compilerArgs>
+              <arg>-Xlint:all,-options,-path</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M3</version>
+          <configuration>
+            <forkMode>never</forkMode>
+            <includes>
+              <include>**/*Test.java</include>
+            </includes>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <extensions>true</extensions>
+          <version>4.1.0</version>
+          <configuration>
+            <instructions>
+              <_include>-bnd.bnd</_include>
+            </instructions>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.3</version>
+        </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>

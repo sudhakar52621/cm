@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>pcfxml</artifactId>
+  <name>XML support code for PCF work</name>
+  <packaging>jar</packaging>
+
+  <parent>
+    <artifactId>pcfcodegen-parent</artifactId>
+    <groupId>com.guidewire.pl.pcfcodegen</groupId>
+    <version>10.14.3</version>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.guidewire.xml.simple</groupId>
+      <artifactId>simplexml-schema</artifactId>
+      <version>${simplexml.schema.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>${findbugs.jsr305.version}</version>
+      <optional>true</optional><!-- needed only for @Nullable annotation -->
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.codegen</groupId>
+      <artifactId>codegen-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.pcf</groupId>
+      <artifactId>pcf-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.xml.simple</groupId>
+      <artifactId>simplexml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl</groupId>
+      <artifactId>pli18n</artifactId>
+      <version>${pli18n.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>${intellj.annotations.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

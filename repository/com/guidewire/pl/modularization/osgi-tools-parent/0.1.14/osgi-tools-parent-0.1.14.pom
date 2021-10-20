@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.guidewire.pl.modularization</groupId>
+  <artifactId>osgi-tools-parent</artifactId>
+  <version>0.1.14</version>
+  <packaging>pom</packaging>
+
+  <name>OSGi Tools</name>
+  <description>OSGi tooling projects</description>
+
+  <organization>
+    <name>Guidewire, Inc.</name>
+    <url>http://guidewire.com</url>
+  </organization>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- plugins -->
+    <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+
+    <!-- maven/java -->
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+
+    <!-- libraries -->
+    <bndlibVersion>4.2.0</bndlibVersion>
+  </properties>
+
+  <modules>
+    <module>osgi-metadata-gen</module>
+    <module>osgi-idea-plugin</module>
+    <module>osgi-maven-plugin</module>
+  </modules>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven.compiler.plugin.version}</version>
+          <configuration>
+            <compilerArguments>
+              <Xlint />
+            </compilerArguments>
+            <showWarnings>true</showWarnings>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven.release.plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <scm>
+    <developerConnection>scm:git:ssh://stash.guidewire.com/bld/osgi-tools.git</developerConnection>
+    <connection>scm:git:https://stash.guidewire.com/scm/bld/osgi-tools.git</connection>
+    <tag>osgi-tools-parent-0.1.14</tag>
+  </scm>
+
+  <!-- Custom GW plugins -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>gw.releases.group</id>
+      <url>https://nexus.guidewire.com/content/repositories/releases-group/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>gw.snapshots.group</id>
+      <url>https://nexus.guidewire.com/content/repositories/snapshots-group/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <repository>
+      <id>gw.releases.group</id>
+      <url>https://nexus.guidewire.com/content/groups/releases-group/</url>
+      <name>Guidewire internal releases repository</name>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>gw.snapshots.group</id>
+      <url>https://nexus.guidewire.com/content/groups/snapshots-group/</url>
+      <name>Guidewire internal snapshots repository</name>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>com.guidewire.pl.releases</id> <!-- id must match id in the ~/.m2/settings.xml! -->
+      <url>https://nexus.guidewire.com/content/repositories/releases/</url>
+      <name>Guidewire internal releases repository</name>
+    </repository>
+    <snapshotRepository>
+      <id>com.guidewire.pl.snapshots-dev</id>
+      <url>https://nexus.guidewire.com/content/repositories/snapshots-dev/</url>
+      <name>Guidewire internal snapshots repository</name>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

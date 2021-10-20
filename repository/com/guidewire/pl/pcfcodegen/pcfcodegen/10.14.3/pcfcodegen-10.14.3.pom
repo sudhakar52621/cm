@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>pcfcodegen</artifactId>
+  <name>PCF Code Generator</name>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>com.guidewire.pl.pcfcodegen</groupId>
+    <artifactId>pcfcodegen-parent</artifactId>
+    <version>10.14.3</version>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>pcfschema</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>${findbugs.jsr305.version}</version>
+      <optional>true</optional><!-- needed only for @Nullable annotation -->
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.codemodel</groupId>
+      <artifactId>codemodel</artifactId>
+      <version>${codemodel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.codegen</groupId>
+      <artifactId>codegen-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.pl.pcf</groupId>
+      <artifactId>pcf-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.guidewire.xml.simple</groupId>
+      <artifactId>simplexml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>${protobuf.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.easytesting</groupId>
+    	<artifactId>fest-assert</artifactId>
+    	<version>${fest.assert.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>pcfschema</artifactId>
+      <version>${project.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>${asm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm-commons</artifactId>
+      <version>${asm.version}</version>
+    </dependency>
+  </dependencies>
+</project>

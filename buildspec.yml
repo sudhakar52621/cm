@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Nothing to do in the install phase...
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      - echo $abEip
+      - printenv
+      - set
+      - sed -i "s|AB_URL|$abEip|g"  $CODEBUILD_SRC_DIR/modules/configuration/config/suite/suite-config.xml
+      - sed -i "s|PC_URL|$pcEip|g"  $CODEBUILD_SRC_DIR/modules/configuration/config/suite/suite-config.xml
+      - sed -i "s|BC_URL|$bcEip|g"  $CODEBUILD_SRC_DIR/modules/configuration/config/suite/suite-config.xml
+      - sed -i "s|CC_URL|$ccEip|g"  $CODEBUILD_SRC_DIR/modules/configuration/config/suite/suite-config.xml
+      - head -50 $CODEBUILD_SRC_DIR/modules/configuration/config/suite/suite-config.xml
+  build:
+    commands:
+       - chmod +x gwb
+       - ./gwb warTomcatDbcp 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - dist/wars/TomcatDbcp/ab.war
+    - scripts*/**
+    - appspec.yml

@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>gw.managed</groupId>
+    <artifactId>gw-cactus</artifactId>
+    <name>GW Cactus Framework Jar</name>
+    <version>1.8.4</version>
+    <packaging>jar</packaging>
+    <distributionManagement>
+        <repository>
+            <id>gw.thirdparty</id>
+            <url>https://nexus.guidewire.com/content/repositories/thirdparty</url>
+            <name>Guidewire repository for thirdparty JARs</name>
+        </repository>
+        <snapshotRepository>
+            <id>gw.thridparty</id>
+            <url>https://nexus.guidewire.com/content/repositories/snapshots-dev</url>
+            <name>Guidewire repository for thirdparty JARs</name>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <!-- Central proxy -->
+        <repository>
+            <id>central</id>
+            <name>Guidewire Nexus proxy for Maven Central</name>
+            <url>https://nexus.guidewire.com/content/repositories/central</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>gw.thirdparty</id>
+            <url>https://nexus.guidewire.com/content/repositories/thirdparty/</url>
+            <name>Guidewire repository for thirdparty JARs</name>
+        </repository>
+    </repositories>
+</project>
